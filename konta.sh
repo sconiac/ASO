@@ -41,7 +41,7 @@ case $opt in
         fi
     ;;
     3)
-        echo "${BOLD}${GREEN}Podaj nazwę konta:"
+        echo "${BOLD}${GREEN}Podaj nazwę konta:${NC}"
         read new_user_name
         sudo adduser "$new_user_name"
         echo "${GREEN}Dodano nowe konto.${NC}"
@@ -118,10 +118,10 @@ case $opt in
                 read prm3
                 if [[ $prm3 == "y" || $prm3 == "Y" ]]
                 then
-                    usermod -d $new_dir_path $user_name
+                    sudo usermod -d $new_dir_path $user_name
                     echo "${GREEN}Przeniesiono zawartość do nowego katalogu.${NC}"
                 else
-                    usermod $new_dir_path $user_name
+                    sudo usermod $new_dir_path $user_name
                     echo "${GREEN}Zmieniono katalog domowy użytkownika: ${BOLD}${user_name}${NC} ${GREEN}.${NC}"
                 fi
             ;;
@@ -187,7 +187,7 @@ case $opt in
                     echo "${RED}Użytkownik nie będzie mógł się zalogować.${NC}"
                 else
                     echo "${GREEN}Odblokowno konto $user_name.${NC}"
-                    echo "${RED}Użytkownik może się już zalogować.${NC}"
+                    echo "${GREEN}Użytkownik może się już zalogować.${NC}"
                 fi
             ;;
         esac
